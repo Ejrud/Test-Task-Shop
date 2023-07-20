@@ -2,18 +2,12 @@
 
 public class TestItems : MonoBehaviour
 {
+    [SerializeField] private ItemStorage _itemStorage;
+    [SerializeField] private ItemViewer _itemViewer;
+    
     private void Start()
     {
-        
-    }
-    
-    [ContextMenu("DebugOut")]
-    private void DebugOut()
-    {
-        FirstAidKit health = new FirstAidKit(10, "First aid kit", 129);
-        Sword sword = new Sword(12, "Default sword", 123);
-        
-        Debug.Log(health.name);
-        Debug.Log(sword.name);
+        _itemStorage.Init();
+        _itemViewer.Visualize(_itemStorage.items);
     }
 }

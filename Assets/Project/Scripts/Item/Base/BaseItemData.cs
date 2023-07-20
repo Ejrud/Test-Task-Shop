@@ -1,6 +1,7 @@
-using UnityEngine;
+﻿using UnityEngine;
 
-public abstract class Item
+[System.Serializable]
+public class BaseItemData
 {
     public bool isBlocked;
     public string name;

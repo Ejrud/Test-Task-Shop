@@ -1,9 +1,13 @@
 ﻿public class Sword : Weapon
 {
-    public Sword(float damage, string name, float cost)
+    public Sword(BaseItemData data, float damage)
     {
-        this.name = name;
-        this.cost = cost;
+        isBlocked = data.isBlocked;
+        description = data.description;
+        name = data.name;
+        cost = data.cost;
+        icon = data.icon;
+        
         this.damage = damage;
     }
 }
