@@ -75,4 +75,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dataControllerPrefab: {fileID: 6957600667676694803, guid: 4d757dc63a1631648993749b35735481, type: 3}
-  _itemVaultController: {fileID: 7970957960780690686, guid: b532d0c568fc7c544adc34fdcb84fbb5, type: 3}
+  vaultController: {fileID: 7970957960780690686, guid: b532d0c568fc7c544adc34fdcb84fbb5, type: 3}

@@ -2,21 +2,12 @@
 using UnityEngine.UI;
 using TMPro;
 
-public class ItemFrame : MonoBehaviour
+public abstract class ItemFrame : MonoBehaviour
 {
-    [SerializeField] private Image _icon;
-    [SerializeField] private TMP_Text _name;
-    private Item _item;
+    [SerializeField] protected RawImage _icon;
+    [SerializeField] protected TMP_Text _name;
+    protected Item _item;
     
-    public void Init(Item item)
-    {
-        _item = item;
-        _name.text = item.name;
-        // _icon.sprite = item.icon;
-    }
-
-    public void SetActive(bool active)
-    {
-        gameObject.SetActive(active);
-    }
+    public abstract void Init(Item item);
+    public abstract void SetActive(bool active);
 }

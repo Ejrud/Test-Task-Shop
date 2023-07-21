@@ -8,5 +8,5 @@ public class BaseData
     public float cost;
     public int id;
     public bool isBlocked;
-    public Texture2D icon;
+    public Sprite icon;
 }

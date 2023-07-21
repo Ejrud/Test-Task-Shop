@@ -49,5 +49,5 @@ MonoBehaviour:
   _cost: 12
   _id: 2
   _isBlocked: 0
-  _icon: {fileID: 0}
+  _icon: {fileID: 21300000, guid: d0ecc78fd2aec944fb1b88227f2a89bd, type: 3}
   protection: 0

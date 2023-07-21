@@ -4,10 +4,10 @@ using UnityEngine;
 public class ItemViewer : MonoBehaviour
 {
     [SerializeField] private Transform _parent;
-    [SerializeField] private ItemFrame _itemFramePrefab;
+    [SerializeField] private ShopItemFrame _itemFramePrefab;
     private ItemFrame[] _frames = new ItemFrame[0];
 
-    public void Visualize(List<Item> items)
+    public void Initialize(List<Item> items)
     {
         UpdateItemList(items.Count);
         SetProperties(items);

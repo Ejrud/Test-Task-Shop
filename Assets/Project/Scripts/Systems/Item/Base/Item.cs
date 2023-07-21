@@ -6,10 +6,9 @@ public abstract class Item : MonoBehaviour
     public string name => _name;
     public string description => _description;
     public float cost => _cost;
-    
     public int id => _id;
     public bool isBlocked => _isBlocked;
-    public Texture2D icon => _icon;
+    public Texture2D icon => _icon.texture;
 
     [SerializeField] protected string _name;
     [SerializeField] protected string _description;
@@ -17,7 +16,7 @@ public abstract class Item : MonoBehaviour
     
     [SerializeField] protected int _id;
     [SerializeField] protected bool _isBlocked;
-    [SerializeField] protected Texture2D _icon;
+    [SerializeField] protected Sprite _icon;
 
     public void Construct(BaseData baseData)
     {

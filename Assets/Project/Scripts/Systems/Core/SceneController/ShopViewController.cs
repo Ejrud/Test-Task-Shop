@@ -1,18 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class ShopViewController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private ItemViewer _itemViewer;
+    private VaultController _vault;
+    
+    [Inject]
+    public void Construct(VaultController vaultController)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        _vault = vaultController;
+        _itemViewer.Initialize(_vault.items);
     }
 }

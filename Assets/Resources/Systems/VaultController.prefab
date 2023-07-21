@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7970957960780690685}
   - component: {fileID: 7970957960780690686}
   m_Layer: 0
-  m_Name: ItemDictionaryController
+  m_Name: VaultController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

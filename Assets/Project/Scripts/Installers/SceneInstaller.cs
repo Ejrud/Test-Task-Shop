@@ -20,6 +20,8 @@ public class SceneInstaller : MonoInstaller
             .Bind<GameController>()
             .FromInstance(_gameController)
             .AsSingle();
+
+        _gameController.Initialize();
     }
 
     private void InstallShowViewController()

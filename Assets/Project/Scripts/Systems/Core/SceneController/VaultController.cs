@@ -14,7 +14,6 @@ public class VaultController : MonoBehaviour
         _itemsList = GetItemsFromObjects(_itemObjects);
         foreach (var item in _itemsList)
         {
-            Debug.Log($"Item {item.name} added to dictionary");
             _itemDictionary.Add(item.id, item);
         }
     }

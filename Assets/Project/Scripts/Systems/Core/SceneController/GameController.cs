@@ -1,18 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private GameObject _shopCanvas;
+    [SerializeField] private GameObject _inventoryCanvas;
+    
+    [SerializeField] private Button _shopButton;
+    [SerializeField] private Button _inventoryButton;
+
+    public void Initialize()
     {
+        SetLayout(true, false);
         
+        _shopButton.onClick.AddListener(() =>
+        {
+            SetLayout(true, false);
+        }); 
+        
+        _inventoryButton.onClick.AddListener(() =>
+        {
+            SetLayout(false, true);
+        });
     }
 
-    // Update is called once per frame
-    void Update()
+    private void SetLayout(bool shop, bool inventory)
     {
-        
+        _shopCanvas.SetActive(shop);
+        _inventoryCanvas.SetActive(inventory);
     }
 }
