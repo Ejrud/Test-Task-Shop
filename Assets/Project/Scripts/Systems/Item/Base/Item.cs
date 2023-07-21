@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [System.Serializable]
-public abstract class Item : MonoBehaviour
+public abstract class Item
 {
     public string name => _name;
     public string description => _description;
