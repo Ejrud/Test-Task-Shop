@@ -44,8 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9aea3b52a6255f4eb2d6f8177505067, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemObjects:
-  - {fileID: 2636572790085085838, guid: 282a3fafa41482a4cb3983f490fc72ff, type: 3}
-  - {fileID: 2636572790085085838, guid: 0e02c0792e21df145a0da4052ebd8230, type: 3}
-  - {fileID: 2636572790085085838, guid: e24a39fd1a696cd46b223d072dd70b2b, type: 3}
-  - {fileID: 2636572790085085838, guid: 9e6cad59cadbe1c49a66dd71536b15f2, type: 3}
+  _defaultDictionary: {fileID: 11400000, guid: e41adbd9540a09d479e368bdae297c2e, type: 2}

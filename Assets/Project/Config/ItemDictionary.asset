@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9dc4c5f2bd395943a0753e45be8ee01, type: 3}
+  m_Name: ItemDictionary
+  m_EditorClassIdentifier: 
+  _swords:
+  - _name: Default sword
+    _description: Just default sword
+    _cost: 12
+    _id: 0
+    _isBlocked: 1
+    _icon: {fileID: 21300000, guid: 9e575088ef6503d4a9b9e5a83a0e522d, type: 3}
+    damage: 4
+    attackTimeback: 0.5
+  _axes:
+  - _name: Default axe
+    _description: Just default axe
+    _cost: 15
+    _id: 100
+    _isBlocked: 1
+    _icon: {fileID: 21300000, guid: 9e306cc24a3895f44b021d4fed95c60d, type: 3}
+    damage: 12
+    attackTimeback: 1
+  _shields:
+  - _name: Default shield
+    _description: Just defaul shield
+    _cost: 15
+    _id: 200
+    _isBlocked: 1
+    _icon: {fileID: 21300000, guid: d0ecc78fd2aec944fb1b88227f2a89bd, type: 3}
+    protection: 23
+  _headArmors:
+  - _name: Default head armor
+    _description: Just default head armor
+    _cost: 19
+    _id: 400
+    _isBlocked: 1
+    _icon: {fileID: 21300000, guid: 5f54cd45d4de5214cbeaf76993a22839, type: 3}
+    protection: 16
