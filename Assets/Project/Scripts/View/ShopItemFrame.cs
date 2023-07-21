@@ -1,23 +1,25 @@
 using System;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ShopItemFrame : ItemFrame
 {
     public event Action<Item, CurrencyType> OnSelect;
-    [SerializeField] private Button _buyButton;
-    [SerializeField] private CurrencyType _currencyType;
-    
-    public override void Initialize(Item item)
+    [SerializeField] private CurrencyButton[] _currencyButton;
+
+    public override void Initialize(Item item, Sprite icon)
     {
         _item = item;
         _name.text = item.name;
-        _icon.texture = item.icon;
-        
-        _buyButton.onClick.AddListener(() =>
+        _icon.sprite = icon;
+
+        foreach (var unit in _currencyButton)
         {
-            OnSelect?.Invoke(_item, _currencyType);
-        });
+            unit.SetButtonText($"Buy for {_item.GetCostByCurrecy(unit.currencyType)} {unit.currencyType}"); 
+            unit.button.onClick.AddListener(() =>
+            {
+                OnSelect?.Invoke(_item, unit.currencyType);
+            });
+        }
     }
 
     public override void SetActive(bool active)

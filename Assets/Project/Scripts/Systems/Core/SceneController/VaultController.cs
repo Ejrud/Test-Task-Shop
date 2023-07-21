@@ -5,7 +5,6 @@ public class VaultController : MonoBehaviour
 {
     public List<Item> items => _itemsList;
     [SerializeField] private ItemDictionary _defaultDictionary;
-
     
     private Dictionary<int, Item> _itemDictionary = new Dictionary<int, Item>();
     private List<Item> _itemsList = new List<Item>();

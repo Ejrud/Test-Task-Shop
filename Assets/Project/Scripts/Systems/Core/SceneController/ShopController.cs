@@ -21,51 +21,60 @@ public class ShopController : MonoBehaviour
         for (int i = 0; i < _itemViewer.frames.Length; i++)
         {
             ShopItemFrame item = (ShopItemFrame)_itemViewer.frames[i];
-            item.OnSelect += BuyItem;
+            item.OnSelect += PrepareBuyItem;
         }
     }
 
-    private void BuyItem(Item item, CurrencyType currencyType)
+    private void PrepareBuyItem(Item item, CurrencyType currencyType)
     {
+        if (_dataController.IsContainsInInventory(item.id))
+        {
+            ErrorMessage("This item has already been purchased");
+            return;
+        }
+
+        int cost = item.GetCostByCurrecy(currencyType);
+
         switch (currencyType)
         {
             case CurrencyType.Silver:
-                if (!IsEnoughtCurrecy(_dataController.data.currency.silver, item.cost, CurrencyType.Silver))
+                if (!IsEnoughtCurrecy(_dataController.data.currency.silver, cost, CurrencyType.Silver))
                     return;
                 
                 break;
             
             case CurrencyType.Gold:
-                if (!IsEnoughtCurrecy(_dataController.data.currency.gold, item.cost, CurrencyType.Gold))
+                if (!IsEnoughtCurrecy(_dataController.data.currency.gold, cost, CurrencyType.Gold))
                     return;
                 
                 break;
                 
             case CurrencyType.Platinum:
-                if (!IsEnoughtCurrecy(_dataController.data.currency.platinum, item.cost, CurrencyType.Platinum))
+                if (!IsEnoughtCurrecy(_dataController.data.currency.platinum, cost, CurrencyType.Platinum))
                     return;
                 
                 break;
         }
 
         Debug.Log($"Buy {item.name}");
-        BuyItem(item);
+        BuyItem(item, currencyType);
     }
 
-    private void BuyItem(Item item)
+    private void BuyItem(Item item, CurrencyType type)
     {
-        
+        _dataController.RemoveCurrecy(type, item.GetCostByCurrecy(type));
+        _dataController.AddItem(item);
     }
 
     private bool IsEnoughtCurrecy(int currecyStorage, int cost, CurrencyType type)
     {
         bool isEnough = currecyStorage > cost;
-        if (!isEnough) ErrorMessage(type);
+        if (!isEnough) ErrorMessage("Not enough funds " + type);
         return isEnough;
     }
 
-    private void ErrorMessage(CurrencyType type)
+    private void ErrorMessage(string message)
     {
-        Debug.Log($"Not enough {type} to buy");
+        Debug.Log(message);
     }
 }

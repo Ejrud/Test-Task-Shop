@@ -1,31 +1,44 @@
 using UnityEngine;
+using UnityEngine.Profiling;
 
 [System.Serializable]
 public abstract class Item
 {
     public string name => _name;
+    public string imageName => _imageName;
     public string description => _description;
-    public int cost => _cost;
+    public Currency costByCurrency => _costByCurrency;
     public int id => _id;
     public bool isBlocked => _isBlocked;
-    public Texture2D icon => _icon.texture;
 
     [SerializeField] protected string _name;
+    [SerializeField] protected string _imageName;
     [SerializeField] protected string _description;
-    [SerializeField] protected int _cost;
+    [SerializeField] protected Currency _costByCurrency;
     
     [SerializeField] protected int _id;
     [SerializeField] protected bool _isBlocked;
-    [SerializeField] protected Sprite _icon;
 
-    public void Construct(BaseData baseData)
+    public int GetCostByCurrecy(CurrencyType type)
     {
-        _name = baseData.name;
-        _description = baseData.description;
-        _cost = baseData.cost;
-        _id = baseData.id;
-        _isBlocked = baseData.isBlocked;
-        _icon = baseData.icon;
+        int cost = 0;
+        
+        switch (type)
+        {
+            case CurrencyType.Silver:
+                cost = _costByCurrency.silver;
+                break;
+                
+            case CurrencyType.Gold:
+                cost = _costByCurrency.gold;
+                break;
+            
+            case CurrencyType.Platinum:
+                cost = _costByCurrency.platinum;
+                break;
+        }
+
+        return cost;
     }
 
     public void SetBlock(bool block)

@@ -14,35 +14,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _swords:
   - _name: Default sword
+    _imageName: Sword
     _description: Just default sword
-    _cost: 12
+    _costByCurrency:
+      silver: 23
+      gold: 10
+      platinum: 3
     _id: 0
     _isBlocked: 1
-    _icon: {fileID: 21300000, guid: 9e575088ef6503d4a9b9e5a83a0e522d, type: 3}
     damage: 4
     attackTimeback: 0.5
   _axes:
   - _name: Default axe
+    _imageName: Axe
     _description: Just default axe
-    _cost: 15
+    _costByCurrency:
+      silver: 27
+      gold: 12
+      platinum: 4
     _id: 100
     _isBlocked: 1
-    _icon: {fileID: 21300000, guid: 9e306cc24a3895f44b021d4fed95c60d, type: 3}
     damage: 12
     attackTimeback: 1
   _shields:
   - _name: Default shield
+    _imageName: Shield
     _description: Just defaul shield
-    _cost: 15
+    _costByCurrency:
+      silver: 34
+      gold: 14
+      platinum: 6
     _id: 200
     _isBlocked: 1
-    _icon: {fileID: 21300000, guid: d0ecc78fd2aec944fb1b88227f2a89bd, type: 3}
     protection: 23
   _headArmors:
   - _name: Default head armor
+    _imageName: Helmet
     _description: Just default head armor
-    _cost: 19
+    _costByCurrency:
+      silver: 41
+      gold: 20
+      platinum: 7
     _id: 400
     _isBlocked: 1
-    _icon: {fileID: 21300000, guid: 5f54cd45d4de5214cbeaf76993a22839, type: 3}
     protection: 16
