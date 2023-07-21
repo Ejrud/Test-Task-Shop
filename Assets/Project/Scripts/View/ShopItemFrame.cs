@@ -14,7 +14,7 @@ public class ShopItemFrame : ItemFrame
 
         foreach (var unit in _currencyButton)
         {
-            unit.SetButtonText($"Buy for {unit.currencyType}"); 
+            unit.SetButtonText($"Buy for {_item.GetCostByCurrecy(unit.currencyType)} {unit.currencyType}"); 
             unit.button.onClick.AddListener(() =>
             {
                 OnSelect?.Invoke(_item, unit.currencyType);

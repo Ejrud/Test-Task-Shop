@@ -33,22 +33,24 @@ public class ShopController : MonoBehaviour
             return;
         }
 
+        int cost = item.GetCostByCurrecy(currencyType);
+
         switch (currencyType)
         {
             case CurrencyType.Silver:
-                if (!IsEnoughtCurrecy(_dataController.data.currency.silver, item.cost, CurrencyType.Silver))
+                if (!IsEnoughtCurrecy(_dataController.data.currency.silver, cost, CurrencyType.Silver))
                     return;
                 
                 break;
             
             case CurrencyType.Gold:
-                if (!IsEnoughtCurrecy(_dataController.data.currency.gold, item.cost, CurrencyType.Gold))
+                if (!IsEnoughtCurrecy(_dataController.data.currency.gold, cost, CurrencyType.Gold))
                     return;
                 
                 break;
                 
             case CurrencyType.Platinum:
-                if (!IsEnoughtCurrecy(_dataController.data.currency.platinum, item.cost, CurrencyType.Platinum))
+                if (!IsEnoughtCurrecy(_dataController.data.currency.platinum, cost, CurrencyType.Platinum))
                     return;
                 
                 break;
@@ -60,7 +62,7 @@ public class ShopController : MonoBehaviour
 
     private void BuyItem(Item item, CurrencyType type)
     {
-        _dataController.RemoveCurrecy(type, item.cost);
+        _dataController.RemoveCurrecy(type, item.GetCostByCurrecy(type));
         _dataController.AddItem(item);
     }
 
