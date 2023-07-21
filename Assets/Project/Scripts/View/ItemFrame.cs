@@ -8,6 +8,6 @@ public abstract class ItemFrame : MonoBehaviour
     [SerializeField] protected TMP_Text _name;
     protected Item _item;
     
-    public abstract void Init(Item item);
+    public abstract void Initialize(Item item);
     public abstract void SetActive(bool active);
 }

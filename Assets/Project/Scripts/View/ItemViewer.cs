@@ -1,13 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ItemViewer : MonoBehaviour
 {
+    public ItemFrame[] frames => _frames;
     [SerializeField] private Transform _parent;
     [SerializeField] private ShopItemFrame _itemFramePrefab;
     private ItemFrame[] _frames = new ItemFrame[0];
 
-    public void Initialize(List<Item> items)
+    public void UpdateList(List<Item> items)
     {
         UpdateItemList(items.Count);
         SetProperties(items);
@@ -18,7 +20,7 @@ public class ItemViewer : MonoBehaviour
         int count = 0;
         foreach (Item item in items)
         {
-            _frames[count].Init(item);
+            _frames[count].Initialize(item);
             count++;
         }
     }

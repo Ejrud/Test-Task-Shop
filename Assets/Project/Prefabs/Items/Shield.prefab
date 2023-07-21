@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2313852349588044961}
-  - component: {fileID: 1963460617724296754}
+  - component: {fileID: 1394615581659892247}
   m_Layer: 0
-  m_Name: HeadArmor
+  m_Name: Shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1963460617724296754
+--- !u!114 &1394615581659892247
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,13 +41,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2636572790085085838}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c26e73e94a342dba97fce34439ef2ef, type: 3}
+  m_Script: {fileID: 11500000, guid: f9e4e686cb8d40d2b24eef28c52ff9eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: Head armor
-  _description: Just a head armor
-  _cost: 32
-  _id: 1
-  _isBlocked: 0
-  _icon: {fileID: 21300000, guid: 5f54cd45d4de5214cbeaf76993a22839, type: 3}
-  protection: 12
+  _name: Shield
+  _description: Just a shield
+  _cost: 12
+  _id: 2
+  _isBlocked: 1
+  _icon: {fileID: 21300000, guid: d0ecc78fd2aec944fb1b88227f2a89bd, type: 3}
+  protection: 0

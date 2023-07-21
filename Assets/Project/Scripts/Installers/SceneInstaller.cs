@@ -4,7 +4,7 @@ using Zenject;
 public class SceneInstaller : MonoInstaller
 {
     [SerializeField] private GameController _gameController;
-    [SerializeField] private ShopViewController _shopViewController;
+    [SerializeField] private ShopController shopController;
     [SerializeField] private InventoryViewController _InventoryViewController;
 
     public override void InstallBindings()
@@ -27,8 +27,8 @@ public class SceneInstaller : MonoInstaller
     private void InstallShowViewController()
     {
         Container
-            .Bind<ShopViewController>()
-            .FromInstance(_shopViewController)
+            .Bind<ShopController>()
+            .FromInstance(shopController)
             .AsSingle();
     }
 

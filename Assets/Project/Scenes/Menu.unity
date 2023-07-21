@@ -924,7 +924,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameController: {fileID: 986169656}
-  _shopViewController: {fileID: 1970871095}
+  shopController: {fileID: 1970871095}
   _InventoryViewController: {fileID: 681894922}
 --- !u!1 &1057541861
 GameObject:

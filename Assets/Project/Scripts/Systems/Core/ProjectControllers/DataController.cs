@@ -21,6 +21,11 @@ public class DataController : MonoBehaviour
         TryLoadData();
     }
 
+    public void SaveData()
+    {
+        _binarySerialization.Serialize(_filePath, _data);
+    }
+
     private void TryLoadData()
     {
         _filePath = Path.Combine(Application.persistentDataPath, _fileName);
@@ -34,9 +39,10 @@ public class DataController : MonoBehaviour
             _data = _defaultData.source;
         }
     }
+    
 
     private void OnApplicationQuit()
     {
-        _binarySerialization.Serialize(_filePath, _data);
+        SaveData();
     }
 }

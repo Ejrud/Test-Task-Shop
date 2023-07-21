@@ -5,14 +5,14 @@ public abstract class Item : MonoBehaviour
 {
     public string name => _name;
     public string description => _description;
-    public float cost => _cost;
+    public int cost => _cost;
     public int id => _id;
     public bool isBlocked => _isBlocked;
     public Texture2D icon => _icon.texture;
 
     [SerializeField] protected string _name;
     [SerializeField] protected string _description;
-    [SerializeField] protected float _cost;
+    [SerializeField] protected int _cost;
     
     [SerializeField] protected int _id;
     [SerializeField] protected bool _isBlocked;

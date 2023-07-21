@@ -48,7 +48,7 @@ MonoBehaviour:
   _description: Just a sword
   _cost: 25
   _id: 3
-  _isBlocked: 0
+  _isBlocked: 1
   _icon: {fileID: 21300000, guid: 9e575088ef6503d4a9b9e5a83a0e522d, type: 3}
   damage: 21
   attackTimeback: 0.5
