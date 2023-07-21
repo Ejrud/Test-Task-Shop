@@ -7,6 +7,7 @@ public class ItemViewer : MonoBehaviour
     public ItemFrame[] frames => _frames;
     [SerializeField] private Transform _parent;
     [SerializeField] private ShopItemFrame _itemFramePrefab;
+    [SerializeField] private ImageDictionary _imageDictionary;
     private ItemFrame[] _frames = new ItemFrame[0];
 
     public void UpdateList(List<Item> items)
@@ -20,7 +21,8 @@ public class ItemViewer : MonoBehaviour
         int count = 0;
         foreach (Item item in items)
         {
-            _frames[count].Initialize(item);
+            Sprite icon = _imageDictionary.GetSpriteByName(item.imageName);
+            _frames[count].Initialize(item, icon);
             count++;
         }
     }

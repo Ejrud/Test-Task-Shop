@@ -4,19 +4,19 @@ using UnityEngine;
 public abstract class Item
 {
     public string name => _name;
+    public string imageName => _imageName;
     public string description => _description;
     public int cost => _cost;
     public int id => _id;
     public bool isBlocked => _isBlocked;
-    public Texture2D icon => _icon.texture;
 
     [SerializeField] protected string _name;
+    [SerializeField] protected string _imageName;
     [SerializeField] protected string _description;
     [SerializeField] protected int _cost;
     
     [SerializeField] protected int _id;
     [SerializeField] protected bool _isBlocked;
-    [SerializeField] protected Sprite _icon;
 
     public void Construct(BaseData baseData)
     {
@@ -25,7 +25,6 @@ public abstract class Item
         _cost = baseData.cost;
         _id = baseData.id;
         _isBlocked = baseData.isBlocked;
-        _icon = baseData.icon;
     }
 
     public void SetBlock(bool block)

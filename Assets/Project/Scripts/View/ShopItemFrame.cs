@@ -8,11 +8,11 @@ public class ShopItemFrame : ItemFrame
     [SerializeField] private Button _buyButton;
     [SerializeField] private CurrencyType _currencyType;
     
-    public override void Initialize(Item item)
+    public override void Initialize(Item item, Sprite icon)
     {
         _item = item;
         _name.text = item.name;
-        _icon.texture = item.icon;
+        _icon.sprite = icon;
         
         _buyButton.onClick.AddListener(() =>
         {

@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class DataController : MonoBehaviour
@@ -21,6 +22,39 @@ public class DataController : MonoBehaviour
         TryLoadData();
     }
 
+    public void RemoveCurrecy(CurrencyType type, int value)
+    {
+        switch (type)
+        {
+            case CurrencyType.Silver:
+                _data.currency.silver -= value;
+                break;
+            
+            case CurrencyType.Gold:
+                _data.currency.gold -= value;
+                break;
+            
+            case CurrencyType.Platinum:
+                _data.currency.platinum -= value;
+                break;
+        }
+    }
+
+    public void AddItem(Item item)
+    {
+        _data.items.Add(item);
+        foreach (var itemData in _data.items)
+        {
+            Debug.Log(itemData.name);
+        }
+    }
+
+    public bool IsContainsInInventory(int id)
+    {
+        // return _data.items.ContainsKey(id);
+        return false;
+    }
+
     public void SaveData()
     {
         _binarySerialization.Serialize(_filePath, _data);
@@ -33,10 +67,15 @@ public class DataController : MonoBehaviour
         if (File.Exists(_filePath))
         {
             _data = _binarySerialization.Deserialize<UserData>(_filePath);
+            foreach (var itemData in _data.items)
+            {
+                Debug.Log(itemData.name);
+            }
         }
         else
         {
             _data = _defaultData.source;
+            _data.items = new List<Item>();
         }
     }
     

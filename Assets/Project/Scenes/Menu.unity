@@ -719,6 +719,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _parent: {fileID: 1614333917}
   _itemFramePrefab: {fileID: 0}
+  _imageDictionary: {fileID: 11400000, guid: 3e7622a62aba1b44bb599a2b03c678dd, type: 2}
 --- !u!1 &879401833
 GameObject:
   m_ObjectHideFlags: 0
@@ -1808,6 +1809,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _parent: {fileID: 1972658500}
   _itemFramePrefab: {fileID: 5281088303902795151, guid: 37a22e9bd853b3a4eb1fff70b51f12b3, type: 3}
+  _imageDictionary: {fileID: 11400000, guid: 3e7622a62aba1b44bb599a2b03c678dd, type: 2}
 --- !u!1 &1972658499
 GameObject:
   m_ObjectHideFlags: 0
