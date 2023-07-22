@@ -58,3 +58,24 @@ MonoBehaviour:
     _id: 400
     _isBlocked: 1
     protection: 16
+  _scrools:
+  - _name: Default scrool 1 (Timed)
+    _imageName: Scrool
+    _description: 
+    _costByCurrency:
+      silver: 12
+      gold: 6
+      platinum: 2
+    _id: 500
+    _isBlocked: 1
+    _activeTime: 20
+  - _name: Default scrool 2 (Timed)
+    _imageName: Scrool
+    _description: 
+    _costByCurrency:
+      silver: 12
+      gold: 6
+      platinum: 2
+    _id: 501
+    _isBlocked: 0
+    _activeTime: 30

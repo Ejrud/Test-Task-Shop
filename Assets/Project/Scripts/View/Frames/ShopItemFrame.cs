@@ -22,7 +22,7 @@ public class ShopItemFrame : ItemFrame
         }
     }
 
-    public override void SetActive(bool active)
+    public override void SetBlock(bool active)
     {
         
     }

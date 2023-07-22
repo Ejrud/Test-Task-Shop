@@ -9,5 +9,5 @@ public abstract class ItemFrame : MonoBehaviour
     protected Item _item;
     
     public abstract void Initialize(Item item, Sprite icon);
-    public abstract void SetActive(bool active);
+    public abstract void SetBlock(bool active);
 }

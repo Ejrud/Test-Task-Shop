@@ -1,9 +1,10 @@
 using UnityEngine;
-using UnityEngine.Profiling;
+using System;
 
-[System.Serializable]
+[Serializable]
 public abstract class Item
 {
+    public event Action<Item> OnItemBloked;
     public string name => _name;
     public string imageName => _imageName;
     public string description => _description;
@@ -41,8 +42,13 @@ public abstract class Item
         return cost;
     }
 
-    public void SetBlock(bool block)
+    public virtual void SetBlock(bool block)
     {
         _isBlocked = block;
+
+        if (block)
+        {
+            OnItemBloked?.Invoke(this);
+        }
     }
 }
