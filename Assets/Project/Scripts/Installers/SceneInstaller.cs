@@ -5,7 +5,7 @@ public class SceneInstaller : MonoInstaller
 {
     [SerializeField] private GameController _gameController;
     [SerializeField] private ShopController shopController;
-    [SerializeField] private InventoryViewController _InventoryViewController;
+    [SerializeField] private InventoryController inventoryController;
 
     public override void InstallBindings()
     {
@@ -35,8 +35,8 @@ public class SceneInstaller : MonoInstaller
     private void InstallInventoryViewController()
     {
         Container
-            .Bind<InventoryViewController>()
-            .FromInstance(_InventoryViewController)
+            .Bind<InventoryController>()
+            .FromInstance(inventoryController)
             .AsSingle();
     }
 }

@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemViewer : MonoBehaviour
+[Serializable]
+public class View : MonoBehaviour
 {
     public ItemFrame[] frames => _frames;
     [SerializeField] private Transform _parent;
-    [SerializeField] private ShopItemFrame _itemFramePrefab;
+    [SerializeField] private ItemFrame _itemFramePrefab;
     [SerializeField] private ImageDictionary _imageDictionary;
     private ItemFrame[] _frames = new ItemFrame[0];
 
@@ -16,7 +17,7 @@ public class ItemViewer : MonoBehaviour
         SetProperties(items);
     }
 
-    private void SetProperties(List<Item> items)
+    public virtual void SetProperties(List<Item> items)
     {
         int count = 0;
         foreach (Item item in items)
@@ -62,7 +63,7 @@ public class ItemViewer : MonoBehaviour
     private void HideSurplus(int startIndex)
     {
         for (int i = startIndex; i < _frames.Length; i++)
-            _frames[i].SetActive(false);
+            _frames[i].SetBlock(false);
     }
 
     private ItemFrame CreateItemFrame()

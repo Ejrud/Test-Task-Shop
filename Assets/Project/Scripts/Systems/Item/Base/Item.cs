@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Profiling;
 
 [System.Serializable]
 public abstract class Item
@@ -41,7 +40,7 @@ public abstract class Item
         return cost;
     }
 
-    public void SetBlock(bool block)
+    public virtual void SetBlock(bool block)
     {
         _isBlocked = block;
     }

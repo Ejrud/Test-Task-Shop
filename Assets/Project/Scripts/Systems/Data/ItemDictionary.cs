@@ -9,6 +9,7 @@ public class ItemDictionary : ScriptableObject
     [SerializeField] private List<Axe> _axes;
     [SerializeField] private List<Shield> _shields;
     [SerializeField] private List<HeadArmor> _headArmors;
+    [SerializeField] private List<Scrool> _scrools;
 
     public List<Item> GetItems()
     {
@@ -17,6 +18,7 @@ public class ItemDictionary : ScriptableObject
         items.AddRange(_axes);
         items.AddRange(_shields);
         items.AddRange(_headArmors);
+        items.AddRange(_scrools);
         return items;
     }
 }

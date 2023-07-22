@@ -8,6 +8,7 @@ public class DataController : MonoBehaviour
     
     [Header("Data for the first run")] 
     [SerializeField] private DefaultData _defaultData;
+    [SerializeField] private VaultController _vault;
     
     [Header("Settings")] 
     [SerializeField] private string _fileName = "userData";
@@ -43,15 +44,17 @@ public class DataController : MonoBehaviour
     public void AddItem(Item item)
     {
         _data.items.Add(item);
-        foreach (var itemData in _data.items)
-        {
-            Debug.Log(itemData.name);
-        }
+        item.SetBlock(false);
     }
 
     public bool IsContainsInInventory(int id)
     {
-        // return _data.items.ContainsKey(id);
+        for (int i = 0; i < _data.items.Count; i++)
+        {
+            if (_data.items[i].id == id)
+                return true;
+        }
+
         return false;
     }
 
@@ -76,6 +79,7 @@ public class DataController : MonoBehaviour
         {
             _data = _defaultData.source;
             _data.items = new List<Item>();
+            _vault.ResetItems();
         }
     }
     

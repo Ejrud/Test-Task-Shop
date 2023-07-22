@@ -21,7 +21,7 @@ MonoBehaviour:
       gold: 10
       platinum: 3
     _id: 0
-    _isBlocked: 1
+    _isBlocked: 0
     damage: 4
     attackTimeback: 0.5
   _axes:
@@ -56,5 +56,16 @@ MonoBehaviour:
       gold: 20
       platinum: 7
     _id: 400
-    _isBlocked: 1
+    _isBlocked: 0
     protection: 16
+  _scrools:
+  - _name: Default scrool (Timed)
+    _imageName: Scrool
+    _description: 
+    _costByCurrency:
+      silver: 12
+      gold: 6
+      platinum: 2
+    _id: 500
+    _isBlocked: 1
+    _activeTime: 5
