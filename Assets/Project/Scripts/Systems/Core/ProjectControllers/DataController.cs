@@ -47,6 +47,11 @@ public class DataController : MonoBehaviour
         item.SetBlock(false);
     }
 
+    public void RemoveItem(Item item)
+    {
+        _data.items.Remove(item);
+    }
+
     public bool IsContainsInInventory(int id)
     {
         for (int i = 0; i < _data.items.Count; i++)
@@ -70,10 +75,6 @@ public class DataController : MonoBehaviour
         if (File.Exists(_filePath))
         {
             _data = _binarySerialization.Deserialize<UserData>(_filePath);
-            foreach (var itemData in _data.items)
-            {
-                Debug.Log(itemData.name);
-            }
         }
         else
         {

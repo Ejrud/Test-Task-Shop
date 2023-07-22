@@ -1,8 +1,9 @@
 public interface ITimed
 {
     public bool isRunning { get; set; }
+    public bool isDeleted { get; set; }
 
-    public void UpdateTime()
+    public void UpdateTime(float delta)
     {
         
     }
@@ -10,5 +11,15 @@ public interface ITimed
     public void SetTime()
     {
         
+    }
+
+    public float GetSeconds
+    {
+        get;
+    }
+
+    public string GetTime
+    {
+        get;
     }
 }

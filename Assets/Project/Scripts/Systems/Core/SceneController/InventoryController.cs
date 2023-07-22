@@ -23,6 +23,10 @@ public class InventoryController : MonoBehaviour
     private void UpdateList()
     {
         List<Item> items = GetUnlockedItems(_vault.itemDictionary, _dataController.data.items);
+        
+        // foreach (var item in items)
+        //     item.OnItemBloked += (blockedItem) => { _dataController.RemoveItem(blockedItem); };
+        
         view.UpdateList(items);
         _timeController.UpdateItems(items);
     }
