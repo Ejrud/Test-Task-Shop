@@ -1,9 +1,12 @@
 using UnityEngine;
 using Zenject;
+using System;
 
 public class ShopController : MonoBehaviour
 {
-    [SerializeField] private ItemViewer _itemViewer;
+    public event Action OnItemPurchased;
+    
+    [SerializeField] private ShopViewer view;
     private VaultController _vault;
     private DataController _dataController;
     
@@ -17,10 +20,10 @@ public class ShopController : MonoBehaviour
 
     private void UpdateList()
     {
-        _itemViewer.UpdateList(_vault.items);
-        for (int i = 0; i < _itemViewer.frames.Length; i++)
+        view.UpdateList(_vault.items);
+        for (int i = 0; i < view.frames.Length; i++)
         {
-            ShopItemFrame item = (ShopItemFrame)_itemViewer.frames[i];
+            ShopItemFrame item = (ShopItemFrame)view.frames[i];
             item.OnSelect += PrepareBuyItem;
         }
     }
@@ -64,6 +67,7 @@ public class ShopController : MonoBehaviour
     {
         _dataController.RemoveCurrecy(type, item.GetCostByCurrecy(type));
         _dataController.AddItem(item);
+        OnItemPurchased?.Invoke();
     }
 
     private bool IsEnoughtCurrecy(int currecyStorage, int cost, CurrencyType type)

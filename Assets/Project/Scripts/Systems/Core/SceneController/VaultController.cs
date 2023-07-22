@@ -1,9 +1,13 @@
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
 public class VaultController : MonoBehaviour
 {
     public List<Item> items => _itemsList;
+    public Dictionary<int, Item> itemDictionary => _itemDictionary;
+    
     [SerializeField] private ItemDictionary _defaultDictionary;
     
     private Dictionary<int, Item> _itemDictionary = new Dictionary<int, Item>();
@@ -26,5 +30,12 @@ public class VaultController : MonoBehaviour
             return item;
 
         return item;
+    }
+
+    public void ResetItems()
+    {
+        _itemsList = _defaultDictionary.GetItems();
+        foreach (var item in _itemsList)
+            item.SetBlock(true);
     }
 }

@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _defaultData: {fileID: 11400000, guid: d048eb8a10b20b940998066e879d4ff9, type: 2}
+  _vault: {fileID: 7970957960780690686, guid: b532d0c568fc7c544adc34fdcb84fbb5, type: 3}
   _fileName: userData
   _filePath: 
   _data:
@@ -52,4 +53,3 @@ MonoBehaviour:
       silver: 0
       gold: 0
       platinum: 0
-    items: []
