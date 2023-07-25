@@ -3,6 +3,6 @@
 [System.Serializable]
 public class UserData
 {
-    public Currency currency;
+    public List<Currency> currency;
     public List<Item> items;
 }

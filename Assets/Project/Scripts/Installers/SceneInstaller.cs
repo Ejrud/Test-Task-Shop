@@ -4,14 +4,18 @@ using Zenject;
 public class SceneInstaller : MonoInstaller
 {
     [SerializeField] private GameController _gameController;
-    [SerializeField] private ShopController shopController;
-    [SerializeField] private InventoryController inventoryController;
+    [SerializeField] private ShopController _shopController;
+    [SerializeField] private InventoryController _inventoryController;
+    [SerializeField] private TimeController _timeController;
+    [SerializeField] private CurrencyViewController _currencyViewController;
 
     public override void InstallBindings()
     {
         InstallGameController();
         InstallShowViewController();
         InstallInventoryViewController();
+        InstallTimeController();
+        InstallCurrencyViewController();
     }
 
     private void InstallGameController()
@@ -28,7 +32,7 @@ public class SceneInstaller : MonoInstaller
     {
         Container
             .Bind<ShopController>()
-            .FromInstance(shopController)
+            .FromInstance(_shopController)
             .AsSingle();
     }
 
@@ -36,7 +40,23 @@ public class SceneInstaller : MonoInstaller
     {
         Container
             .Bind<InventoryController>()
-            .FromInstance(inventoryController)
+            .FromInstance(_inventoryController)
+            .AsSingle();
+    }
+
+    private void InstallTimeController()
+    {
+        Container
+            .Bind<TimeController>()
+            .FromInstance(_timeController)
+            .AsSingle();
+    }
+
+    private void InstallCurrencyViewController()
+    {
+        Container
+            .Bind<CurrencyViewController>()
+            .FromInstance(_currencyViewController)
             .AsSingle();
     }
 }

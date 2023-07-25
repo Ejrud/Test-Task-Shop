@@ -8,13 +8,13 @@ public class InventoryController : MonoBehaviour
     [SerializeField] private View view;
     [SerializeField] private TimeController _timeController;
     private VaultController _vault;
-    private DataController _dataController;
+    private DataService _dataService;
     
     [Inject]
-    public void Construct(VaultController vaultController, DataController dataController)
+    public void Construct(VaultController vaultController, DataService dataService)
     {
         _vault = vaultController;
-        _dataController = dataController;
+        _dataService = dataService;
         UpdateList();
 
         _shop.OnItemPurchased += UpdateList;
@@ -22,7 +22,7 @@ public class InventoryController : MonoBehaviour
     
     private void UpdateList()
     {
-        List<Item> items = GetUnlockedItems(_vault.itemDictionary, _dataController.data.items);
+        List<Item> items = GetUnlockedItems(_vault.itemDictionary, _dataService.data.items);
         
         // foreach (var item in items)
         //     item.OnItemBloked += (blockedItem) => { _dataController.RemoveItem(blockedItem); };

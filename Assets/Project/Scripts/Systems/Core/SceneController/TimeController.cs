@@ -5,10 +5,10 @@ using Zenject;
 public class TimeController : MonoBehaviour
 {
     private List<ITimed> timedItems = new List<ITimed>();
-    private DataController _data;
+    private DataInteraction _data;
     
     [Inject]
-    public void Construct(DataController data)
+    public void Construct(DataInteraction data)
     {
         _data = data;
     }

@@ -8,13 +8,13 @@ public class ShopController : MonoBehaviour
     
     [SerializeField] private ShopViewer view;
     private VaultController _vault;
-    private DataController _dataController;
+    private DataInteraction _dataInteraction;
     
     [Inject]
-    public void Construct(VaultController vaultController, DataController dataController)
+    public void Construct(VaultController vaultController, DataInteraction dataInteraction)
     {
         _vault = vaultController;
-        _dataController = dataController;
+        _dataInteraction = dataInteraction;
         UpdateList();
     }
 
@@ -30,33 +30,17 @@ public class ShopController : MonoBehaviour
 
     private void PrepareBuyItem(Item item, CurrencyType currencyType)
     {
-        if (_dataController.IsContainsInInventory(item.id))
+        if (_dataInteraction.IsContainsInInventory(item.id))
         {
             ErrorMessage("This item has already been purchased");
             return;
         }
 
         int cost = item.GetCostByCurrecy(currencyType);
-
-        switch (currencyType)
+        if (!_dataInteraction.IsEnoughtCurrecy(currencyType, cost))
         {
-            case CurrencyType.Silver:
-                if (!IsEnoughtCurrecy(_dataController.data.currency.silver, cost, CurrencyType.Silver))
-                    return;
-                
-                break;
-            
-            case CurrencyType.Gold:
-                if (!IsEnoughtCurrecy(_dataController.data.currency.gold, cost, CurrencyType.Gold))
-                    return;
-                
-                break;
-                
-            case CurrencyType.Platinum:
-                if (!IsEnoughtCurrecy(_dataController.data.currency.platinum, cost, CurrencyType.Platinum))
-                    return;
-                
-                break;
+            ErrorMessage($"Not enough {currencyType} to buy");
+            return;
         }
 
         Debug.Log($"Buy {item.name}");
@@ -65,8 +49,8 @@ public class ShopController : MonoBehaviour
 
     private void BuyItem(Item item, CurrencyType type)
     {
-        _dataController.RemoveCurrecy(type, item.GetCostByCurrecy(type));
-        _dataController.AddItem(item);
+        _dataInteraction.RemoveCurrecy(type, item.GetCostByCurrecy(type));
+        _dataInteraction.AddItem(item);
         OnItemPurchased?.Invoke();
     }
 
