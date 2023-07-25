@@ -26,19 +26,19 @@ public class TimeController : MonoBehaviour
 
     private void Update()
     {
-        float delta = Time.deltaTime;
-        foreach (var item in timedItems)
-        {
-            item.UpdateTime(delta);
-            
-            if (item.isDeleted)
-                continue;
-            
-            if (item.GetSeconds <= 0)
-            {
-                _data.RemoveItem((Item)item);
-                item.isDeleted = true;
-            }
-        }
+        // float delta = Time.deltaTime;
+        // foreach (var item in timedItems)
+        // {
+        //     item.UpdateTime(delta);
+        //     
+        //     if (item.isDeleted)
+        //         continue;
+        //     
+        //     if (item.GetSeconds <= 0)
+        //     {
+        //         _data.RemoveItem((Item)item);
+        //         item.isDeleted = true;
+        //     }
+        // }
     }
 }

@@ -22,7 +22,7 @@ public class InventoryController : MonoBehaviour
     
     private void UpdateList()
     {
-        List<Item> items = GetUnlockedItems(_vault.itemDictionary, _dataService.data.items);
+        List<Item> items = GetUnlockedItems(_vault.itemDictionary);
         
         // foreach (var item in items)
         //     item.OnItemBloked += (blockedItem) => { _dataController.RemoveItem(blockedItem); };
@@ -31,20 +31,12 @@ public class InventoryController : MonoBehaviour
         _timeController.UpdateItems(items);
     }
 
-    private List<Item> GetUnlockedItems(Dictionary<int, Item> dictionary, List<Item> userItems)
+    private List<Item> GetUnlockedItems(Dictionary<int, Item> dictionary)
     {
         List<Item> items = new List<Item>(); 
         
-        foreach (var item in userItems)
-        {
-            dictionary.Remove(item.id);
-            dictionary.Add(item.id, item);
-        }
-
         foreach (var item in dictionary)
-        {
             items.Add(item.Value);
-        }
 
         return items;
     }

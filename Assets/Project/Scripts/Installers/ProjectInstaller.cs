@@ -10,8 +10,8 @@ public class ProjectInstaller : MonoInstaller
     public override void InstallBindings()
     {
         InstallDataController();
-        InstallDataInteraction();
         InstallVaultController();
+        InstallDataInteraction();
     }
 
     private void InstallDataController()

@@ -45,6 +45,7 @@ public class CurrencyViewController : MonoBehaviour
 
     private void OnDestroy()
     {
-        _dataInteraction.OnCurrancyChanged -= UpdateCurrency;
+        if (_dataInteraction)
+            _dataInteraction.OnCurrancyChanged -= UpdateCurrency;
     }
 }

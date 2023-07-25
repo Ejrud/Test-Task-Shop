@@ -25,7 +25,7 @@ public abstract class Item
     {
         foreach (var unit in _costByCurrencys)
         {
-            if (unit.CurrencyType == type)
+            if (unit.type == type)
                 return unit.value;
         }
 

@@ -16,10 +16,11 @@ MonoBehaviour:
   - _name: Default sword
     _imageName: Sword
     _description: Just default sword
-    _costByCurrency:
-      silver: 23
-      gold: 10
-      platinum: 3
+    _costByCurrencys:
+    - type: 0
+      value: 20
+    - type: 1
+      value: 10
     _id: 0
     _isBlocked: 1
     damage: 4
@@ -28,10 +29,11 @@ MonoBehaviour:
   - _name: Default axe
     _imageName: Axe
     _description: Just default axe
-    _costByCurrency:
-      silver: 27
-      gold: 12
-      platinum: 4
+    _costByCurrencys:
+    - type: 0
+      value: 20
+    - type: 1
+      value: 10
     _id: 100
     _isBlocked: 1
     damage: 12
@@ -40,10 +42,11 @@ MonoBehaviour:
   - _name: Default shield
     _imageName: Shield
     _description: Just defaul shield
-    _costByCurrency:
-      silver: 34
-      gold: 14
-      platinum: 6
+    _costByCurrencys:
+    - type: 0
+      value: 20
+    - type: 1
+      value: 10
     _id: 200
     _isBlocked: 1
     protection: 23
@@ -51,10 +54,11 @@ MonoBehaviour:
   - _name: Default head armor
     _imageName: Helmet
     _description: Just default head armor
-    _costByCurrency:
-      silver: 41
-      gold: 20
-      platinum: 7
+    _costByCurrencys:
+    - type: 0
+      value: 20
+    - type: 1
+      value: 10
     _id: 400
     _isBlocked: 1
     protection: 16
@@ -62,20 +66,11 @@ MonoBehaviour:
   - _name: Default scrool 1 (Timed)
     _imageName: Scrool
     _description: 
-    _costByCurrency:
-      silver: 12
-      gold: 6
-      platinum: 2
+    _costByCurrencys:
+    - type: 0
+      value: 20
+    - type: 1
+      value: 10
     _id: 500
     _isBlocked: 1
     _activeTime: 20
-  - _name: Default scrool 2 (Timed)
-    _imageName: Scrool
-    _description: 
-    _costByCurrency:
-      silver: 12
-      gold: 6
-      platinum: 2
-    _id: 501
-    _isBlocked: 0
-    _activeTime: 30

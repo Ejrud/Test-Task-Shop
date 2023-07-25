@@ -38,12 +38,16 @@ public class DataService : MonoBehaviour
         }
         else
         {
-            data = _defaultData.source;
-            data.items = new List<Item>();
-            _vault.ResetItems();
+            LoadDefaultData();
         }
     }
-    
+
+    private void LoadDefaultData()
+    {
+        data = _defaultData.source;
+        data.items = new List<Item>();
+        _vault.ResetItems();
+    }
 
     private void OnApplicationQuit()
     {

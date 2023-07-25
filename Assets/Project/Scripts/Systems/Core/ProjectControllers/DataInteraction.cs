@@ -29,7 +29,7 @@ public class DataInteraction : MonoBehaviour
     {
         Currency currency = GetCurrencyByType(type);
         currency.value -= value;
-        OnCurrancyChanged?.Invoke(type, value);
+        OnCurrancyChanged?.Invoke(type, currency.value);
     }
 
     public void AddItem(Item item)
@@ -62,11 +62,10 @@ public class DataInteraction : MonoBehaviour
 
     private void CreateCurrecyDictionary()
     {
+        _currencies = new Dictionary<CurrencyType, Currency>();
         foreach (var currecy in _dataService.data.currency)
         {
-            _currencies.Add(currecy.CurrencyType, currecy);
+            _currencies.Add(currecy.type, currecy);
         }
     }
-
-    
 }
