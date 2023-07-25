@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   source:
     currency:
-    - CurrencyType: 0
-      value: 1000
-    - CurrencyType: 1
-      value: 1000
-    - CurrencyType: 2
-      value: 1000
+    - type: 0
+      value: 100
+    - type: 1
+      value: 100
+    - type: 2
+      value: 100

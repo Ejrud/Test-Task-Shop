@@ -1,7 +1,7 @@
 using UnityEngine.UI;
 using UnityEngine;
 
-public class GameController : MonoBehaviour
+public class CanvasSwitcher : MonoBehaviour, IInitializable
 {
     [SerializeField] private GameObject _shopCanvas;
     [SerializeField] private GameObject _inventoryCanvas;

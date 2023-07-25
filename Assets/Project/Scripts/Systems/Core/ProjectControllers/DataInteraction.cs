@@ -14,6 +14,10 @@ public class DataInteraction : MonoBehaviour
     public void Construct(DataService dataService)
     {
         _dataService = dataService;
+    }
+
+    public void Initialize()
+    {
         CreateCurrecyDictionary();
     }
     

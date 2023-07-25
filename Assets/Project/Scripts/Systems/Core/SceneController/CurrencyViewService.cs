@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-public class CurrencyViewController : MonoBehaviour
+public class CurrencyViewService : MonoBehaviour, IInitializable
 {
     [SerializeField] private CurrencyViewType[] _currencyViewType;
     private Dictionary<CurrencyType, CurrencyViewType> _currencyDictionary;
@@ -12,6 +12,10 @@ public class CurrencyViewController : MonoBehaviour
     public void Construct(DataInteraction dataInteraction)
     {
         _dataInteraction = dataInteraction;
+    }
+
+    public void Initialize()
+    {
         CreateCurrecyDictionary();
         InitializeCurrencyContent();
         _dataInteraction.OnCurrancyChanged += UpdateCurrency;

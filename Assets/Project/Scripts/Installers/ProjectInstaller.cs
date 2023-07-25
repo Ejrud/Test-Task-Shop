@@ -24,7 +24,7 @@ public class ProjectInstaller : MonoInstaller
             .FromInstance(gameInstance)
             .AsSingle();
         
-        gameInstance.Initialize();
+        // gameInstance.Initialize();
     }
 
     private void InstallDataInteraction()
@@ -48,6 +48,6 @@ public class ProjectInstaller : MonoInstaller
             .FromInstance(gameInstance)
             .AsSingle();
         
-        gameInstance.Initialize();
+        // gameInstance.Initialize();
     }
 }

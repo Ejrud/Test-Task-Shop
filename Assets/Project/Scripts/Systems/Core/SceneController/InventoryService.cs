@@ -2,11 +2,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-public class InventoryController : MonoBehaviour
+public class InventoryService : MonoBehaviour, IInitializable
 {
-    [SerializeField] private ShopController _shop;
+    [SerializeField] private ShopService _shop;
     [SerializeField] private View view;
-    [SerializeField] private TimeController _timeController;
+    [SerializeField] private TimeService timeService;
     private VaultController _vault;
     private DataService _dataService;
     
@@ -15,11 +15,14 @@ public class InventoryController : MonoBehaviour
     {
         _vault = vaultController;
         _dataService = dataService;
-        UpdateList();
-
-        _shop.OnItemPurchased += UpdateList;
     }
     
+    public void Initialize()
+    {
+        UpdateList();
+        _shop.OnItemPurchased += UpdateList;
+    }
+
     private void UpdateList()
     {
         List<Item> items = GetUnlockedItems(_vault.itemDictionary);
@@ -28,7 +31,7 @@ public class InventoryController : MonoBehaviour
         //     item.OnItemBloked += (blockedItem) => { _dataController.RemoveItem(blockedItem); };
         
         view.UpdateList(items);
-        _timeController.UpdateItems(items);
+        // timeService.UpdateItems(items);
     }
 
     private List<Item> GetUnlockedItems(Dictionary<int, Item> dictionary)

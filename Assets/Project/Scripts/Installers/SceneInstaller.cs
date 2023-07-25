@@ -3,11 +3,11 @@ using Zenject;
 
 public class SceneInstaller : MonoInstaller
 {
-    [SerializeField] private GameController _gameController;
-    [SerializeField] private ShopController _shopController;
-    [SerializeField] private InventoryController _inventoryController;
-    [SerializeField] private TimeController _timeController;
-    [SerializeField] private CurrencyViewController _currencyViewController;
+    [SerializeField] private CanvasSwitcher _canvasSwitcher;
+    [SerializeField] private ShopService _shopService;
+    [SerializeField] private InventoryService _inventoryService;
+    [SerializeField] private TimeService _timeService;
+    [SerializeField] private CurrencyViewService _currencyViewService;
 
     public override void InstallBindings()
     {
@@ -21,42 +21,42 @@ public class SceneInstaller : MonoInstaller
     private void InstallGameController()
     {
         Container
-            .Bind<GameController>()
-            .FromInstance(_gameController)
+            .Bind<CanvasSwitcher>()
+            .FromInstance(_canvasSwitcher)
             .AsSingle();
 
-        _gameController.Initialize();
+        _canvasSwitcher.Initialize();
     }
 
     private void InstallShowViewController()
     {
         Container
-            .Bind<ShopController>()
-            .FromInstance(_shopController)
+            .Bind<ShopService>()
+            .FromInstance(_shopService)
             .AsSingle();
     }
 
     private void InstallInventoryViewController()
     {
         Container
-            .Bind<InventoryController>()
-            .FromInstance(_inventoryController)
+            .Bind<InventoryService>()
+            .FromInstance(_inventoryService)
             .AsSingle();
     }
 
     private void InstallTimeController()
     {
         Container
-            .Bind<TimeController>()
-            .FromInstance(_timeController)
+            .Bind<TimeService>()
+            .FromInstance(_timeService)
             .AsSingle();
     }
 
     private void InstallCurrencyViewController()
     {
         Container
-            .Bind<CurrencyViewController>()
-            .FromInstance(_currencyViewController)
+            .Bind<CurrencyViewService>()
+            .FromInstance(_currencyViewService)
             .AsSingle();
     }
 }

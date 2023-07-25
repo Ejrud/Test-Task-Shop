@@ -2,7 +2,7 @@
 using UnityEngine;
 using Zenject;
 
-public class TimeController : MonoBehaviour
+public class TimeService : MonoBehaviour
 {
     private List<ITimed> timedItems = new List<ITimed>();
     private DataInteraction _data;

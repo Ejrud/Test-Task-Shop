@@ -44,7 +44,13 @@ public class DataService : MonoBehaviour
 
     private void LoadDefaultData()
     {
-        data = _defaultData.source;
+        data = new UserData();
+
+        foreach (var unit in _defaultData.source.currency)
+        {
+            data.currency.Add(new Currency(unit.type, unit.value));
+        }
+        
         data.items = new List<Item>();
         _vault.ResetItems();
     }

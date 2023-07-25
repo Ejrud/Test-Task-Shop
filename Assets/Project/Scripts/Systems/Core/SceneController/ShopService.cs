@@ -2,7 +2,7 @@ using UnityEngine;
 using Zenject;
 using System;
 
-public class ShopController : MonoBehaviour
+public class ShopService : MonoBehaviour, IInitializable
 {
     public event Action OnItemPurchased;
     
@@ -15,6 +15,10 @@ public class ShopController : MonoBehaviour
     {
         _vault = vaultController;
         _dataInteraction = dataInteraction;
+    }
+
+    public void Initialize()
+    {
         UpdateList();
     }
 
