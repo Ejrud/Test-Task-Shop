@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1572890479848954400}
   - component: {fileID: 6957600667676694803}
   m_Layer: 0
-  m_Name: DataController
+  m_Name: DataService
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

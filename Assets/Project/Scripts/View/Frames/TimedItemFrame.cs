@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UnityEngine;
 
 public class TimedItemFrame : InventoryItemFrame
@@ -14,12 +15,8 @@ public class TimedItemFrame : InventoryItemFrame
     public void UpdateText()
     {
         ITimed iTimed = (ITimed)_item;
-        _time.text = iTimed.GetTime;
-
-        if (iTimed.GetSeconds <= 0)
-        {
-            SetBlock(true);
-        }
+        TimeSpan time = TimeSpan.FromSeconds(iTimed.remainingTime);
+        _time.text = String.Format("{0}h {1}m {2}s", time.Hours, time.Minutes, time.Seconds);
     }
     
 }

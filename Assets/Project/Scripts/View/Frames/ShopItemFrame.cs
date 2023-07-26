@@ -8,9 +8,7 @@ public class ShopItemFrame : ItemFrame
 
     public override void Initialize(Item item, Sprite icon)
     {
-        _item = item;
-        _name.text = item.name;
-        _icon.sprite = icon;
+        base.Initialize(item, icon);
 
         foreach (var unit in _currencyButton)
         {

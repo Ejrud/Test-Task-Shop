@@ -1,7 +1,12 @@
 ﻿[System.Serializable]
 public class Currency
 {
-    public int silver;
-    public int gold;
-    public int platinum;
+    public Currency(CurrencyType type, int value)
+    {
+        this.type = type;
+        this.value = value;
+    }
+
+    public CurrencyType type;
+    public int value;
 }

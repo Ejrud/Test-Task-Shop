@@ -3,38 +3,51 @@ using Zenject;
 
 public class ProjectInstaller : MonoInstaller
 {
-    [SerializeField] private DataController _dataControllerPrefab;
-    [SerializeField] private VaultController vaultController;
+    [SerializeField] private DataService _dataServicePrefab;
+    [SerializeField] private DataInteraction _dataInteractionPrefab;
+    [SerializeField] private VaultController _vaultController;
     
     public override void InstallBindings()
     {
         InstallDataController();
         InstallVaultController();
+        InstallDataInteraction();
     }
 
     private void InstallDataController()
     {
         var gameInstance = Container
-            .InstantiatePrefabForComponent<DataController>(_dataControllerPrefab);
+            .InstantiatePrefabForComponent<DataService>(_dataServicePrefab);
         
         Container
-            .Bind<DataController>()
+            .Bind<DataService>()
             .FromInstance(gameInstance)
             .AsSingle();
         
-        gameInstance.Initialize();
+        // gameInstance.Initialize();
+    }
+
+    private void InstallDataInteraction()
+    {
+        var gameInstance = Container
+            .InstantiatePrefabForComponent<DataInteraction>(_dataInteractionPrefab);
+        
+        Container
+            .Bind<DataInteraction>()
+            .FromInstance(gameInstance)
+            .AsSingle();
     }
 
     private void InstallVaultController()
     {
         var gameInstance = Container
-            .InstantiatePrefabForComponent<VaultController>(vaultController);
+            .InstantiatePrefabForComponent<VaultController>(_vaultController);
         
         Container
             .Bind<VaultController>()
             .FromInstance(gameInstance)
             .AsSingle();
         
-        gameInstance.Initialize();
+        // gameInstance.Initialize();
     }
 }

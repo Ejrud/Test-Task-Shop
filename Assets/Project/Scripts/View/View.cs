@@ -6,12 +6,15 @@ using UnityEngine;
 public class View : MonoBehaviour
 {
     public ItemFrame[] frames => _frames;
+    public CanvasType canvasType => _canvasType;
+    
+    [SerializeField] protected CanvasType _canvasType;
     [SerializeField] protected Transform _parent;
-    [SerializeField] protected ItemFrame _itemFramePrefab;
     [SerializeField] protected ImageDictionary _imageDictionary;
+    [SerializeField] protected ItemFrame _itemFramePrefab;
     protected ItemFrame[] _frames = new ItemFrame[0];
 
-    public void UpdateList(List<Item> items)
+    public virtual void UpdateList(List<Item> items)
     {
         ClearItemList();
         CreateNewList(items);
@@ -32,7 +35,8 @@ public class View : MonoBehaviour
             count++;
         }
     }
-
+    
+    // Не лучший способ обновления ячеек, в идеале вместо удаления обновлять ячейки
     private void ClearItemList()
     {
         foreach (var frame in _frames)

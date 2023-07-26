@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class InventoryViewer : View
+public class InventoryView : View
 {
     [SerializeField] private TimedItemFrame _timedItemPrefab;
     private List<TimedItemFrame> _timedFrames = new List<TimedItemFrame>();
@@ -12,7 +12,7 @@ public class InventoryViewer : View
             timeItem.UpdateText();
         }
     }
-
+    
     public override void CreateNewList(List<Item> items)
     {
         int count = 0;
