@@ -6,6 +6,7 @@ using System;
 public class DataInteraction : MonoBehaviour
 {
     public event Action<CurrencyType, int> OnCurrancyChanged;
+    public event Action OnItemDataChanged;
     
     private DataService _dataService;
     private Dictionary<CurrencyType, Currency> _currencies;
@@ -35,16 +36,29 @@ public class DataInteraction : MonoBehaviour
         currency.value -= value;
         OnCurrancyChanged?.Invoke(type, currency.value);
     }
+    
+    public bool IsEnoughtCurrecy(CurrencyType type, int value)
+    {
+        Currency currency = GetCurrencyByType(type);
+        return currency.value > value;
+    }
+
+    public List<Item> GetUserItems()
+    {
+        return _dataService.data.items;
+    }
 
     public void AddItem(Item item)
     {
         _dataService.data.items.Add(item);
         item.SetBlock(false);
+        OnItemDataChanged?.Invoke();
     }
 
     public void RemoveItem(Item item)
     {
         _dataService.data.items.Remove(item);
+        OnItemDataChanged?.Invoke();
     }
     
     public bool IsContainsInInventory(int id)
@@ -56,12 +70,6 @@ public class DataInteraction : MonoBehaviour
         }
 
         return false;
-    }
-
-    public bool IsEnoughtCurrecy(CurrencyType type, int value)
-    {
-        Currency currency = GetCurrencyByType(type);
-        return currency.value > value;
     }
 
     private void CreateCurrecyDictionary()

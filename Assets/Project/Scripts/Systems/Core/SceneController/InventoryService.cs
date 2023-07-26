@@ -1,46 +1,39 @@
-using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
 public class InventoryService : MonoBehaviour, IInitializable
 {
-    [SerializeField] private ShopService _shop;
-    [SerializeField] private View view;
-    [SerializeField] private TimeService timeService;
-    private VaultController _vault;
-    private DataService _dataService;
+    [SerializeField] private InventoryView _viewPrefab;
+    private CanvasSwitcherService _canvasSwitcherService;
+    private DataInteraction _dataInteraction;
+    private InventoryView _view;
     
     [Inject]
-    public void Construct(VaultController vaultController, DataService dataService)
+    public void Construct(DataInteraction dataInteraction, CanvasSwitcherService canvasSwitcherService)
     {
-        _vault = vaultController;
-        _dataService = dataService;
+        _dataInteraction = dataInteraction;
+        _canvasSwitcherService = canvasSwitcherService;
     }
     
     public void Initialize()
     {
+        _dataInteraction.OnItemDataChanged += UpdateList;
+        _view = Instantiate(_viewPrefab);
+        _canvasSwitcherService.AddCanvas(_view.canvasType, _view.gameObject);
         UpdateList();
-        _shop.OnItemPurchased += UpdateList;
     }
 
     private void UpdateList()
     {
-        List<Item> items = GetUnlockedItems(_vault.itemDictionary);
-        
-        // foreach (var item in items)
-        //     item.OnItemBloked += (blockedItem) => { _dataController.RemoveItem(blockedItem); };
-        
-        view.UpdateList(items);
-        // timeService.UpdateItems(items);
+        _view.UpdateList(_dataInteraction.GetUserItems());
     }
 
-    private List<Item> GetUnlockedItems(Dictionary<int, Item> dictionary)
+    private void OnDestroy()
     {
-        List<Item> items = new List<Item>(); 
+        if (_dataInteraction)
+            _dataInteraction.OnItemDataChanged -= UpdateList;
         
-        foreach (var item in dictionary)
-            items.Add(item.Value);
-
-        return items;
+        if (_canvasSwitcherService)
+            _canvasSwitcherService.RemoveCanvas(_view.canvasType);
     }
 }

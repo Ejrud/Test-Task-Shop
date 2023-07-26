@@ -3,29 +3,19 @@ using Zenject;
 
 public class SceneInstaller : MonoInstaller
 {
-    [SerializeField] private CanvasSwitcher _canvasSwitcher;
     [SerializeField] private ShopService _shopService;
     [SerializeField] private InventoryService _inventoryService;
     [SerializeField] private TimeService _timeService;
     [SerializeField] private CurrencyViewService _currencyViewService;
+    [SerializeField] private CanvasSwitcherService _canvasSwitcherService;
 
     public override void InstallBindings()
     {
-        InstallGameController();
         InstallShowViewController();
         InstallInventoryViewController();
         InstallTimeController();
         InstallCurrencyViewController();
-    }
-
-    private void InstallGameController()
-    {
-        Container
-            .Bind<CanvasSwitcher>()
-            .FromInstance(_canvasSwitcher)
-            .AsSingle();
-
-        _canvasSwitcher.Initialize();
+        InstallCanvasSwitcherService();
     }
 
     private void InstallShowViewController()
@@ -57,6 +47,14 @@ public class SceneInstaller : MonoInstaller
         Container
             .Bind<CurrencyViewService>()
             .FromInstance(_currencyViewService)
+            .AsSingle();
+    }
+    
+    private void InstallCanvasSwitcherService()
+    {
+        Container
+            .Bind<CanvasSwitcherService>()
+            .FromInstance(_canvasSwitcherService)
             .AsSingle();
     }
 }

@@ -1,33 +1,27 @@
 using UnityEngine;
 using Zenject;
-using System;
 
 public class ShopService : MonoBehaviour, IInitializable
 {
-    public event Action OnItemPurchased;
-    
-    [SerializeField] private ShopViewer view;
-    private VaultController _vault;
-    private DataInteraction _dataInteraction;
-    
-    [Inject]
-    public void Construct(VaultController vaultController, DataInteraction dataInteraction)
-    {
-        _vault = vaultController;
-        _dataInteraction = dataInteraction;
-    }
+    [SerializeField] private View _viewPrefab;
+    [Inject] private VaultController _vault;
+    [Inject] private DataInteraction _dataInteraction;
+    [Inject] private CanvasSwitcherService _canvasSwitcherService;
+    private View _view;
 
     public void Initialize()
     {
+        _view = Instantiate(_viewPrefab);
+        _canvasSwitcherService.AddCanvas(_view.canvasType, _view.gameObject);
         UpdateList();
     }
 
     private void UpdateList()
     {
-        view.UpdateList(_vault.items);
-        for (int i = 0; i < view.frames.Length; i++)
+        _view.UpdateList(_vault.items);
+        for (int i = 0; i < _view.frames.Length; i++)
         {
-            ShopItemFrame item = (ShopItemFrame)view.frames[i];
+            ShopItemFrame item = (ShopItemFrame)_view.frames[i];
             item.OnSelect += PrepareBuyItem;
         }
     }
@@ -55,18 +49,25 @@ public class ShopService : MonoBehaviour, IInitializable
     {
         _dataInteraction.RemoveCurrecy(type, item.GetCostByCurrecy(type));
         _dataInteraction.AddItem(item);
-        OnItemPurchased?.Invoke();
-    }
-
-    private bool IsEnoughtCurrecy(int currecyStorage, int cost, CurrencyType type)
-    {
-        bool isEnough = currecyStorage > cost;
-        if (!isEnough) ErrorMessage("Not enough funds " + type);
-        return isEnough;
     }
 
     private void ErrorMessage(string message)
     {
         Debug.Log(message);
+    }
+
+    private void OnDestroy()
+    {
+        if (_canvasSwitcherService)
+            _canvasSwitcherService.RemoveCanvas(_view.canvasType);
+        
+        for (int i = 0; i < _view.frames.Length; i++)
+        {
+            if (!(ShopItemFrame)_view.frames[i])
+                return;
+            
+            ShopItemFrame item = (ShopItemFrame)_view.frames[i];
+            item.OnSelect -= PrepareBuyItem;
+        }
     }
 }
