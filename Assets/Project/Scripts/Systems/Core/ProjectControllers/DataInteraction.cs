@@ -2,7 +2,6 @@
 using UnityEngine;
 using Zenject;
 using System;
-using System.Linq;
 
 public class DataInteraction : MonoBehaviour
 {

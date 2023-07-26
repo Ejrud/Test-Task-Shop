@@ -1,7 +1,7 @@
 public interface ITimed
 {
-    public bool isRunning { get; set; }
-    public bool isDeleted { get; set; }
+    public float remainingTime { get; set; }
+    public bool idBlocked { get; set; }
 
     public void UpdateTime(float delta)
     {
@@ -11,15 +11,5 @@ public interface ITimed
     public void SetTime()
     {
         
-    }
-
-    public float GetSeconds
-    {
-        get;
-    }
-
-    public string GetTime
-    {
-        get;
     }
 }
