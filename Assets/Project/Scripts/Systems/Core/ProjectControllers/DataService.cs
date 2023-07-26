@@ -2,6 +2,8 @@
 using System.IO;
 using UnityEngine;
 
+// Разделил логику загрузки данных и логику взаимодействия
+// данных на разные классы по принципу единой ответственности
 public class DataService : MonoBehaviour
 {
     public UserData data;

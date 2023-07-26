@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
 public class VaultController : MonoBehaviour
@@ -20,16 +18,6 @@ public class VaultController : MonoBehaviour
         {
             _itemDictionary.Add(item.id, item);
         }
-    }
-
-    public Item GetItemById(int id)
-    {
-        Item item = null;
-        
-        if (_itemDictionary.TryGetValue(id, out item))
-            return item;
-
-        return item;
     }
 
     public void ResetItems()

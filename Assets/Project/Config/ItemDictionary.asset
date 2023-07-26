@@ -18,12 +18,28 @@ MonoBehaviour:
     _description: Just default sword
     _costByCurrencys:
     - type: 0
-      value: 20
+      value: 18
     - type: 1
-      value: 10
+      value: 7
+    - type: 2
+      value: 3
     _id: 0
     _isBlocked: 1
     damage: 4
+    attackTimeback: 0.5
+  - _name: Sword
+    _imageName: Sword
+    _description: Just default sword
+    _costByCurrencys:
+    - type: 0
+      value: 20
+    - type: 1
+      value: 9
+    - type: 2
+      value: 4
+    _id: 1
+    _isBlocked: 1
+    damage: 5
     attackTimeback: 0.5
   _axes:
   - _name: Default axe
@@ -31,10 +47,26 @@ MonoBehaviour:
     _description: Just default axe
     _costByCurrencys:
     - type: 0
-      value: 20
+      value: 22
     - type: 1
       value: 10
+    - type: 2
+      value: 4
     _id: 100
+    _isBlocked: 1
+    damage: 12
+    attackTimeback: 1
+  - _name: Axe
+    _imageName: Axe
+    _description: Just default axe
+    _costByCurrencys:
+    - type: 0
+      value: 22
+    - type: 1
+      value: 10
+    - type: 2
+      value: 4
+    _id: 101
     _isBlocked: 1
     damage: 12
     attackTimeback: 1
@@ -44,10 +76,25 @@ MonoBehaviour:
     _description: Just defaul shield
     _costByCurrencys:
     - type: 0
-      value: 20
+      value: 24
     - type: 1
-      value: 10
+      value: 11
+    - type: 2
+      value: 4
     _id: 200
+    _isBlocked: 1
+    protection: 23
+  - _name: Shield
+    _imageName: Shield
+    _description: Just defaul shield
+    _costByCurrencys:
+    - type: 0
+      value: 24
+    - type: 1
+      value: 11
+    - type: 2
+      value: 4
+    _id: 201
     _isBlocked: 1
     protection: 23
   _headArmors:
@@ -56,21 +103,64 @@ MonoBehaviour:
     _description: Just default head armor
     _costByCurrencys:
     - type: 0
-      value: 20
+      value: 15
     - type: 1
-      value: 10
+      value: 7
+    - type: 1
+      value: 3
     _id: 400
     _isBlocked: 1
     protection: 16
   _scrools:
-  - _name: Default scrool 1 (Timed)
+  - _name: Default scrool (10 sec)
     _imageName: Scrool
     _description: 
     _costByCurrencys:
     - type: 0
-      value: 20
+      value: 17
     - type: 1
-      value: 10
+      value: 7
+    - type: 1
+      value: 3
     _id: 500
     _isBlocked: 1
-    _activeTime: 20
+    _activeTime: 10
+  - _name: Default scrool (30 sec)
+    _imageName: Scrool
+    _description: 
+    _costByCurrencys:
+    - type: 0
+      value: 23
+    - type: 1
+      value: 11
+    - type: 1
+      value: 5
+    _id: 501
+    _isBlocked: 1
+    _activeTime: 30
+  - _name: Default scrool (30 min)
+    _imageName: Scrool
+    _description: 
+    _costByCurrencys:
+    - type: 0
+      value: 23
+    - type: 1
+      value: 11
+    - type: 1
+      value: 5
+    _id: 502
+    _isBlocked: 1
+    _activeTime: 1800
+  - _name: Default scrool (1 h)
+    _imageName: Scrool
+    _description: 
+    _costByCurrencys:
+    - type: 0
+      value: 23
+    - type: 1
+      value: 11
+    - type: 1
+      value: 5
+    _id: 503
+    _isBlocked: 1
+    _activeTime: 3600

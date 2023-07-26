@@ -1,10 +1,10 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Items/ItemDictionary", fileName = "ItemDictionary")]
 public class ItemDictionary : ScriptableObject
 {
+    // В идеале конечно лучше разбивать эти списки на отдельные конфиги
     [SerializeField] private List<Sword> _swords;
     [SerializeField] private List<Axe> _axes;
     [SerializeField] private List<Shield> _shields;
