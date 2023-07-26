@@ -2,19 +2,22 @@
 using UnityEngine;
 using Zenject;
 using System;
+using System.Linq;
 
 public class DataInteraction : MonoBehaviour
 {
     public event Action<CurrencyType, int> OnCurrancyChanged;
     public event Action OnItemDataChanged;
     
+    private VaultController _vault;
     private DataService _dataService;
     private Dictionary<CurrencyType, Currency> _currencies;
 
     [Inject]
-    public void Construct(DataService dataService)
+    public void Construct(DataService dataService, VaultController vault)
     {
         _dataService = dataService;
+        _vault = vault;
     }
 
     public void Initialize()
@@ -46,6 +49,27 @@ public class DataInteraction : MonoBehaviour
     public List<Item> GetUserItems()
     {
         return _dataService.data.items;
+    }
+    
+    // Ужасная логика сортировки, времени на реализацию адекватного решения не было
+    public List<Item> GetLockedItems()
+    {
+        List<Item> lockedItems = new List<Item>();
+
+        foreach (var vaultItem in _vault.items)
+        {
+            bool isContains = false;
+            foreach (var userItem in _dataService.data.items)
+            {
+                if (userItem.id == vaultItem.id)
+                    isContains = true;
+            }
+            
+            if (!isContains)
+                lockedItems.Add(vaultItem);
+        }
+
+        return lockedItems;
     }
 
     public void AddItem(Item item)

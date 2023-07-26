@@ -4,7 +4,6 @@ using Zenject;
 public class ShopService : MonoBehaviour, IInitializable
 {
     [SerializeField] private View _viewPrefab;
-    [Inject] private VaultController _vault;
     [Inject] private DataInteraction _dataInteraction;
     [Inject] private CanvasSwitcherService _canvasSwitcherService;
     private View _view;
@@ -13,12 +12,13 @@ public class ShopService : MonoBehaviour, IInitializable
     {
         _view = Instantiate(_viewPrefab);
         _canvasSwitcherService.AddCanvas(_view.canvasType, _view.gameObject);
+        _dataInteraction.OnItemDataChanged += UpdateList;
         UpdateList();
     }
 
     private void UpdateList()
     {
-        _view.UpdateList(_vault.items);
+        _view.UpdateList(_dataInteraction.GetLockedItems());
         for (int i = 0; i < _view.frames.Length; i++)
         {
             ShopItemFrame item = (ShopItemFrame)_view.frames[i];
@@ -60,6 +60,9 @@ public class ShopService : MonoBehaviour, IInitializable
     {
         if (_canvasSwitcherService)
             _canvasSwitcherService.RemoveCanvas(_view.canvasType);
+        
+        if (_dataInteraction)
+            _dataInteraction.OnItemDataChanged -= UpdateList;
         
         for (int i = 0; i < _view.frames.Length; i++)
         {
